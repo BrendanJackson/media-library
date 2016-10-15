@@ -3,7 +3,7 @@
 //THIS BLOCK CONNECTS TO THE DATABASE, IF IT CANNOT CONNECT IT 'CATCHES' THE ERROR AND SENDS USER A MESSAGE
 try{
 	//new(lets php know we're creating an object) 'PDO(driver == 'connects one thing to another') == class'
-	$db = new PDO("mysql:host=localhost;dbname=database;port=3306","root","evanetra");
+	$db = new PDO("mysql:host=localhost;dbname=mediaLibrary;port=3306","root","evanetra");
 	//mysql format:$db = new PDO("mysql:host=localhost;dbname=DATABASE_NAME;port=3306","USERNAME","PASSWORD");
 	//in The PDO arguments you list the database '(sqlite,mysql,etc)'.__DIR__.'/path' then the path to the database
 	// .__DIR__. 'tells the pc to look in this directory for the database'
