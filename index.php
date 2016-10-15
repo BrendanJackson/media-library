@@ -1,29 +1,13 @@
+<?php 
+include("inc/data.php");
+include("inc/connection.php");
+include("inc/functions.php");
 
-<html>
-<head>
-	<title><?php echo 'Personal Media Library'; ?></title>
-	<link rel="stylesheet" href="style.css" type="text/css">
-</head>
-<body>
+$page_title = "Personal Media Library"; // names page title
+$section = null; //sets section to a standard of null
 
-	<div class="header">
-
-		<div class="wrapper">
-
-			<h1 class="branding-title"><a href="./">Personal Media Library</a></h1>
-
-			<ul class="nav">
-                <li class="books"><a href="catalog.php?cat=books">Books</a></li>
-                <li class="movies"><a href="catalog.php?cat=movies">Movies</a></li>
-                <li class="music"><a href="catalog.php?cat=music">Music</a></li>
-                <li class="suggest"><a href="suggest.php">Suggest</a></li>
-            </ul>
-
-		</div>
-
-	</div>
-
-	<div id="content">
+include("inc/header.php"); 
+?>
 		<div class="section catalog random">
 
 			<div class="wrapper">
@@ -31,29 +15,18 @@
 				<h2>May we suggest something?</h2>
 
 								<ul class="items">
-					<li><a href="details.php?id=201"><img src="img/media/forest_gump.jpg" alt="Forrest Gump"><p>View Details</p></a></li><li><a href="details.php?id=204"><img src="img/media/princess_bride.jpg" alt="The Princess Bride"><p>View Details</p></a></li><li><a href="details.php?id=302"><img src="img/media/elvis_presley.jpg" alt="Elvis Forever"><p>View Details</p></a></li><li><a href="details.php?id=303"><img src="img/media/garth_brooks.jpg" alt="No Fences"><p>View Details</p></a></li>								
-				</ul>
+									<?php
+									$random = random_catalog_array(); //function randomly chooses 4 items, name it $random 
+									foreach($random as $item){ //for every item of full_catalog_array randomly chosen, set those as $id
+									echo get_item_html($item); //takes arguments from full_catalog_array(), the total and the array['$id']in full_catalog_array()
+ 									}	
+									?>								
+								</ul>
 
 			</div>
 
 		</div>
 
-	</div>
+<?php include("inc/footer.php"); 
 
-	<div class="footer">
-
-		<div class="wrapper">
-
-			<ul>		
-				<li><a href="http://twitter.com/treehouse">Twitter</a></li>
-				<li><a href="https://www.facebook.com/TeamTreehouse">Facebook</a></li>
-			</ul>
-
-			<p>&copy; <?php date('Y'); ?>2015 Personal Media Library</p>
-
-		</div>
-	
-	</div>
-
-</body>
-</html>
+?>
